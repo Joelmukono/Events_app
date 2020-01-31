@@ -37,7 +37,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@color/colorAccent"
                 android:textColor="@color/colorTextIcons"
-                android:text="Add Events"/>
+                android:text="Add Events Form"/>
 
 
 

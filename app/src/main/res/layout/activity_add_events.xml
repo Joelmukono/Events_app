@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".AddEvents">
 
+    <ImageView
+        android:id="@+id/addEventsImageBG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/eventEditText"
+        android:layout_marginBottom="-101dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/concert" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +23,7 @@
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:hint="Add event"
+        android:background="@color/colorTextIcons"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -22,7 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:background="@color/colorTextIcons"
+        android:background="@color/colorAccent"
+        android:text="Put Events"
         />
 
 
