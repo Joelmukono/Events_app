@@ -23,4 +23,9 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
 
 
     }
+
+    @Override
+    public void onClick(View v){
+
+    }
 }
