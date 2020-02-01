@@ -29,6 +29,7 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v){
         if(v == mAddEvent){
             String event = mEventText.getText().toString();
+            Intent intent = new Intent(AddEvents.this,EventDisplay.class );
 
         }
 
