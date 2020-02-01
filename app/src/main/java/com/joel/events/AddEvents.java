@@ -19,6 +19,8 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_events);
 
+        mAddEvent.setOnClickListener(this);
+
 
     }
 }
