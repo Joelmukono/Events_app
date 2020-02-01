@@ -15,6 +15,18 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/concert" />
 
+    <TextView
+        android:id="@+id/formText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Add Event"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="35dp"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="50sp"
+        android:textStyle="bold"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
