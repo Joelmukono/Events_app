@@ -11,7 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EventDisplay"></activity>
         <activity android:name=".AddEvents" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
