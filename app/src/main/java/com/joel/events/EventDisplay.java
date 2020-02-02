@@ -16,5 +16,6 @@ public class EventDisplay extends AppCompatActivity {
         Intent intent = getIntent();
         String events = intent.getStringExtra("event");
 
+
     }
 }
