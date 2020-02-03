@@ -11,6 +11,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/eventsText"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="35dp"
+        android:textSize="40sp"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>
