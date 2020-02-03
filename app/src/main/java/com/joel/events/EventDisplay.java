@@ -17,6 +17,10 @@ import android.widget.ListView;
 public class EventDisplay extends AppCompatActivity {
 
     @BindView(R.id.eventsText) TextView mEventsText;
+    @BindView(R.id.eventList) ListView mEventsList;
+
+    private String[] events = new String[] {"hackerthon","birthday","graduation","openDay",
+            "thursday speaker","goCarting","music concert", "movie premere"};
 
 
     @Override
@@ -25,6 +29,18 @@ public class EventDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_event_display);
 
         ButterKnife.bind(this);
+
+        EventsAdapter adapter = new EventsAdapter(this,android.R.layout.simple_list_item_1,events);
+        mEventsList.setAdapter(adapter);
+
+        mEventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String event = ((TextView)view).getText().toString();
+                Toast.makeText(EventDisplay.this,event,Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         Intent intent = getIntent();
         String events = intent.getStringExtra("event");
