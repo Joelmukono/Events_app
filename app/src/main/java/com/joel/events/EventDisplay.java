@@ -22,6 +22,10 @@ public class EventDisplay extends AppCompatActivity {
     private String[] events = new String[] {"hackerthon","birthday","graduation","openDay",
             "thursday speaker","goCarting","music concert", "movie premere"};
 
+    private  String[] locations = new String[] {"westlands","ngong road","karen","kileleshwa",
+            "uthiru","kikuyu","runda","parklands"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class EventDisplay extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        EventsAdapter adapter = new EventsAdapter(this,android.R.layout.simple_list_item_1,events);
+        EventsAdapter adapter = new EventsAdapter(this,android.R.layout.simple_list_item_1,events,locations);
         mEventsList.setAdapter(adapter);
 
         mEventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
