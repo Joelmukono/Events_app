@@ -1,4 +1,4 @@
-package com.joel.events;
+package com.joel.events.adapters;
 import android.content.Context;
 
 import android.widget.ArrayAdapter;

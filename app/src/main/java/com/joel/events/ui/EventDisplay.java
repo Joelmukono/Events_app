@@ -1,4 +1,4 @@
-package com.joel.events;
+package com.joel.events.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,9 @@ import butterknife.ButterKnife;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.ListView;
+
+import com.joel.events.adapters.EventsAdapter;
+import com.joel.events.R;
 
 public class EventDisplay extends AppCompatActivity {
 
