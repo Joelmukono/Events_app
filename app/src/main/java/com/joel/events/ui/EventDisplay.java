@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.joel.events.Category;
+import com.joel.events.adapters.EventListAdapter;
 import com.joel.events.adapters.EventsAdapter;
 import com.joel.events.R;
 import com.joel.events.interfaces.EventsApi;
@@ -37,7 +38,9 @@ public class EventDisplay extends AppCompatActivity {
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
+    private EventListAdapter mAdapter;
 
+    public List<Category> categories;
 
 
 
