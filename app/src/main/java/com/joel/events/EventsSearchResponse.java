@@ -14,10 +14,10 @@ public class EventsSearchResponse implements Serializable
     private String locale;
     @SerializedName("pagination")
     @Expose
-    private Pagination pagination;
+    private com.joel.events.Pagination pagination;
     @SerializedName("categories")
     @Expose
-    private List<Category> categories = null;
+    private List<com.joel.events.Category> categories = null;
     private final static long serialVersionUID = -4707434165275256377L;
 
     /**
@@ -33,7 +33,7 @@ public class EventsSearchResponse implements Serializable
      * @param categories
      * @param locale
      */
-    public EventsSearchResponse(String locale, Pagination pagination, List<Category> categories) {
+    public EventsSearchResponse(String locale, com.joel.events.Pagination pagination, List<com.joel.events.Category> categories) {
         super();
         this.locale = locale;
         this.pagination = pagination;
@@ -48,19 +48,19 @@ public class EventsSearchResponse implements Serializable
         this.locale = locale;
     }
 
-    public Pagination getPagination() {
+    public com.joel.events.Pagination getPagination() {
         return pagination;
     }
 
-    public void setPagination(Pagination pagination) {
+    public void setPagination(com.joel.events.Pagination pagination) {
         this.pagination = pagination;
     }
 
-    public List<Category> getCategories() {
+    public List<com.joel.events.Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(List<com.joel.events.Category> categories) {
         this.categories = categories;
     }
 
