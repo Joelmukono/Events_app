@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.joel.events.R;
 import com.joel.events.interfaces.EventsApi;
+import com.joel.events.models.EventsSearchResponse;
 import com.joel.events.services.EventsClient;
 
 import butterknife.BindView;
@@ -32,7 +33,6 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
 
         mAddEvent.setOnClickListener(this);
 
-        EventsApi client = EventsClient.getClient();
 
 
 

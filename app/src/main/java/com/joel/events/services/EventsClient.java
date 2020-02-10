@@ -12,12 +12,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.joel.events.BuildConfig.EVENT_API_KEY;
+import static com.joel.events.Constants.EVENT_BASE_URL;
 
 public class EventsClient {
     private static Retrofit retrofit = null;
 
     public static EventsApi getClient(){
-        if(retrofit==null){
+        if(retrofit == null){
             OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
@@ -26,7 +27,7 @@ public class EventsClient {
                 }
             }).build();
 
-            retrofit = new Retrofit.Builder().baseUrl(EVENT_API_KEY).client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build();
+            retrofit = new Retrofit.Builder().baseUrl(EVENT_BASE_URL).client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofit.create(EventsApi.class);
     }

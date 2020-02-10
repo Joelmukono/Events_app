@@ -34,7 +34,7 @@
         android:layout_above="@+id/addEventButton"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
-        android:hint="Add event"
+        android:hint="Enter Category eg. Music"
         android:background="@color/colorTextIcons"
         android:layout_centerHorizontal="true"/>
 
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:background="@color/colorAccent"
-        android:text="Put Events"
+        android:text="Search Categories"
         />
 
 
