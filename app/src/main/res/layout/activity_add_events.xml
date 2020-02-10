@@ -19,7 +19,7 @@
         android:id="@+id/formText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Add Event"
+        android:text="Search Categories"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_margin="35dp"

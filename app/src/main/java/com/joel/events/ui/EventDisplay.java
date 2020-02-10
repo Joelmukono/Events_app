@@ -58,6 +58,7 @@ public class EventDisplay extends AppCompatActivity {
         call.enqueue(new Callback<EventsSearchResponse>() {
             @Override
             public void onResponse(Call<EventsSearchResponse> call, Response<EventsSearchResponse> response) {
+                hideProgressBar();
                 if (response.isSuccessful()) {
                     List<Category> categoryList = response.body().getCategories();
                     String[] categry = new String[categoryList.size()];
@@ -68,8 +69,10 @@ public class EventDisplay extends AppCompatActivity {
 
                     ArrayAdapter adapter = new EventsAdapter(EventDisplay.this, android.R.layout.simple_list_item_1, categry);
                     mEventsList.setAdapter(adapter);
+                    showEvents();
 
-
+                }else {
+                    showUnsuccessfulMessage();
                 }
             }
 
@@ -95,7 +98,7 @@ public class EventDisplay extends AppCompatActivity {
         mErrorTextView.setVisibility(View.VISIBLE);
     }
 
-    private void showRestaurants() {
+    private void showEvents() {
         mEventsList.setVisibility(View.VISIBLE);
         mEventsText.setVisibility(View.VISIBLE);
     }
