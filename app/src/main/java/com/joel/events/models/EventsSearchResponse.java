@@ -1,5 +1,5 @@
 
-package com.joel.events;
+package com.joel.events.models;
 
 import java.io.Serializable;
 import java.util.List;

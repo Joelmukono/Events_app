@@ -1,6 +1,6 @@
 package com.joel.events.interfaces;
 
-import com.joel.events.EventsSearchResponse;
+import com.joel.events.models.EventsSearchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
