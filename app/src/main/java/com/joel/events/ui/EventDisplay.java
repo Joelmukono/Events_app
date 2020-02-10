@@ -1,6 +1,8 @@
 package com.joel.events.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,8 +35,7 @@ public class EventDisplay extends AppCompatActivity {
 
     private static final String TAG = EventDisplay.class.getSimpleName();
 
-    @BindView(R.id.eventsText) TextView mEventsText;
-    @BindView(R.id.eventList) ListView mEventsList;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
@@ -63,15 +64,12 @@ public class EventDisplay extends AppCompatActivity {
             public void onResponse(Call<EventsSearchResponse> call, Response<EventsSearchResponse> response) {
                 hideProgressBar();
                 if (response.isSuccessful()) {
-                    List<Category> categoryList = response.body().getCategories();
-                    String[] categry = new String[categoryList.size()];
-
-                    for (int i = 0; i < categry.length; i++) {
-                        categry[i] = categoryList.get(i).getName();
-                    }
-
-                    ArrayAdapter adapter = new EventsAdapter(EventDisplay.this, android.R.layout.simple_list_item_1, categry);
-                    mEventsList.setAdapter(adapter);
+                    categories = response.body().getCategories();
+                    mAdapter = new EventListAdapter(EventDisplay.this,categories);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EventDisplay.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
                     showEvents();
 
                 }else {
@@ -102,8 +100,7 @@ public class EventDisplay extends AppCompatActivity {
     }
 
     private void showEvents() {
-        mEventsList.setVisibility(View.VISIBLE);
-        mEventsText.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
