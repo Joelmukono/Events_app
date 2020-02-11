@@ -1,6 +1,7 @@
 package com.joel.events.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.joel.events.models.Category;
 import com.joel.events.R;
+import com.joel.events.ui.EventDisplay;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> {
+public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> implements View.OnClickListener {
     private List<Category> mEvents;
     private Context mContext;
 
@@ -54,6 +58,16 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, EventDisplay.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mEvents));
+            mContext.startActivity(intent);
         }
 
         public void bindEvent(Category category) {
