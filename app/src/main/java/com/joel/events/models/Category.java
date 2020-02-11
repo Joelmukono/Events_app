@@ -102,6 +102,8 @@ public class Category
         return shortNameLocalized;
     }
 
+
+
     public void setShortNameLocalized(String shortNameLocalized) {
         this.shortNameLocalized = shortNameLocalized;
     }

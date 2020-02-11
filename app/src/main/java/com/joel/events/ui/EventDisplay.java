@@ -21,7 +21,7 @@ import retrofit2.Response;
 import android.view.View;
 import android.widget.TextView;
 
-import com.joel.events.Category;
+import com.joel.events.models.Category;
 import com.joel.events.adapters.EventListAdapter;
 import com.joel.events.adapters.EventsAdapter;
 import com.joel.events.R;
@@ -41,7 +41,7 @@ public class EventDisplay extends AppCompatActivity {
 
     private EventListAdapter mAdapter;
 
-    public List<Category> categories;
+    public List<com.joel.events.models.Category> categories;
 
 
 

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.joel.events.Category;
+import com.joel.events.models.Category;
 import com.joel.events.R;
 
 import java.util.List;
