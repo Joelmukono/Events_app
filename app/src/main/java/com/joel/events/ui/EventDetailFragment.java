@@ -8,13 +8,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.joel.events.R;
+
+import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class EventDetailFragment extends Fragment {
+    @BindView(R.id.restaurantImageView) ImageView mImageLabel;
+    @BindView(R.id.categoryNameTextView) TextView mNameLabel;
+    @BindView(R.id.websiteLink) TextView mWebsiteLabel;
+    @BindView(R.id.saveCategoryButton) TextView mSaveRestaurantButton;
 
 
     public EventDetailFragment() {
