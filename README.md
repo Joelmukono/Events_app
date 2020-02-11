@@ -1,5 +1,5 @@
 # Events App
-Event app is an android application that allows users to view and display and event using an edit text and button.
+Event app is an android application that allows users to Search an view categories of Events.
 ## Author: Joel Mukono
 
 ## Technologies Used
