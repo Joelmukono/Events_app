@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> implements View.OnClickListener {
+public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder>{
     private List<Category> mEvents;
     private Context mContext;
 
@@ -47,7 +47,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         return mEvents.size();
     }
 
-    public class EventViewHolder extends RecyclerView.ViewHolder {
+    public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.categoryNameTextView) TextView mCategoryNameTextView;
         @BindView(R.id.categoryShortTextView) TextView mCategoryTextView;
