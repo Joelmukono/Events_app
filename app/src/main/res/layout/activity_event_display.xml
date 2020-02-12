@@ -29,17 +29,7 @@
         android:layout_centerVertical="true"
         />
 
-    <ListView
-        android:id="@+id/eventList"
-        android:layout_width="match_parent"
-        android:layout_height="714dp"
-        android:layout_alignTop="@+id/eventsText"
-        android:layout_alignParentEnd="true"
 
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-35dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"

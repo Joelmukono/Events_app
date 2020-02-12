@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.joel.events.models.Category;
 import com.joel.events.R;
+import com.joel.events.ui.EventDetailActivity;
 import com.joel.events.ui.EventDisplay;
 
 import org.parceler.Parcels;
@@ -64,7 +65,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, EventDisplay.class);
+            Intent intent = new Intent(mContext, EventDetailActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("restaurants", Parcels.wrap(mEvents));
             mContext.startActivity(intent);
