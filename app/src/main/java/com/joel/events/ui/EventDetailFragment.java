@@ -1,6 +1,7 @@
 package com.joel.events.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.joel.events.Constants;
 import com.joel.events.R;
 import com.joel.events.models.Category;
 
@@ -25,7 +30,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventDetailFragment extends Fragment {
+public class EventDetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.restaurantImageView) ImageView mImageLabel;
     @BindView(R.id.categoryNameTextView) TextView mNameLabel;
     @BindView(R.id.websiteLink) TextView mWebsiteLabel;
@@ -68,8 +73,28 @@ public class EventDetailFragment extends Fragment {
         mNameLabel.setText(android.text.TextUtils.join(", ", categories));
         mWebsiteLabel.setText(mCategory.getResourceUri());
 
+        mNameLabel.setOnClickListener(this);
+        mNameLabel.setOnClickListener(this);
+        mWebsiteLabel.setOnClickListener(this);
+
+        mSaveRestaurantButton.setOnClickListener(this);
+
 
         return view;
     }
+
+    public void onClick(View v){
+
+        if (v == mSaveRestaurantButton) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CATEGORIES);
+            restaurantRef.push().setValue(mCategory);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
 
 }

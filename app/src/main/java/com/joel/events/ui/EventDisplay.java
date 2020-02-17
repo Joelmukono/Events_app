@@ -36,8 +36,8 @@ import java.util.List;
 
 public class EventDisplay extends AppCompatActivity {
 
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     private static final String TAG = EventDisplay.class.getSimpleName();
 
@@ -65,6 +65,10 @@ public class EventDisplay extends AppCompatActivity {
 //        if (mRecentAddress != null) {
 //            getRestaurants(mRecentAddress);
 //        }
+        Intent intent = getIntent();
+        String event = intent.getStringExtra("event");
+
+        getEvent(event);
 
 
         EventsApi client = EventsClient.getClient();
@@ -102,6 +106,13 @@ public class EventDisplay extends AppCompatActivity {
         });
 
     }
+
+    private  void getEvent(String location){
+        final EventsClient yelpBusinessesSearchResponse = new EventsClient();
+
+        yelpBusinessesSearchResponse.getClient();
+    }
+
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
