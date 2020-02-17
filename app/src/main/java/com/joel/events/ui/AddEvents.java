@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.joel.events.Constants;
 import com.joel.events.R;
 import com.joel.events.interfaces.EventsApi;
 import com.joel.events.models.EventsSearchResponse;
@@ -48,12 +49,16 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v){
         if(v == mAddEvent){
             String event = mEventText.getText().toString();
-            addToSharedPreferences(location);
+            addToSharedPreferences(event);
             Intent intent = new Intent(AddEvents.this, EventDisplay.class );
             intent.putExtra("event",event);
             startActivity(intent);
 
         }
 
+    }
+
+    private void addToSharedPreferences(String event) {
+        mEditor.putString(Constants.PREFERENCES_EVENT_KEY, event).apply();
     }
 }
