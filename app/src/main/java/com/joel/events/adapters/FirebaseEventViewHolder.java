@@ -2,6 +2,7 @@ package com.joel.events.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static final String TAG = FirebaseEventViewHolder.class.getSimpleName();
     View mView;
     Context mContext;
 
@@ -42,6 +44,8 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
         categoryNameView.setText(category.getName());
         websiteLink.setText(category.getResourceUri());
+        Log.e(TAG,"error");
+
     }
 
     @Override
@@ -60,7 +64,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
                 Intent intent = new Intent(mContext, EventDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("restaurants", Parcels.wrap(events));
+                intent.putExtra("events", Parcels.wrap(events));
 
                 mContext.startActivity(intent);
             }

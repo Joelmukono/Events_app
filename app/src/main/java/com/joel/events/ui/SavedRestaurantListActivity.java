@@ -23,8 +23,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SavedRestaurantListActivity extends AppCompatActivity {
-    private DatabaseReference mRestaurantReference;
-    private FirebaseRecyclerAdapter<Category, FirebaseEventViewHolder> mFirebaseAdapter;
+    private DatabaseReference mEventReference;
+    private FirebaseRecyclerAdapter<Category, FirebaseEventViewHolder> mfirebaseAdapter;
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
@@ -34,15 +34,15 @@ public class SavedRestaurantListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_display);
         ButterKnife.bind(this);
 
-        mRestaurantReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORIES);
+        mEventReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORIES);
 
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter(){
-        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>().setQuery(mRestaurantReference,Category.class).build();
+        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>().setQuery(mEventReference,Category.class).build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Category, FirebaseEventViewHolder>(options) {
+        mfirebaseAdapter = new FirebaseRecyclerAdapter<Category, FirebaseEventViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull FirebaseEventViewHolder firebaseEventViewHolder, int i, @NonNull Category category) {
                 firebaseEventViewHolder.bindEvents(category);
@@ -58,20 +58,20 @@ public class SavedRestaurantListActivity extends AppCompatActivity {
 
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mFirebaseAdapter);
+        mRecyclerView.setAdapter(mfirebaseAdapter);
 
     }
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAdapter.startListening();
+        mfirebaseAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(mFirebaseAdapter!= null) {
-            mFirebaseAdapter.stopListening();
+        if(mfirebaseAdapter!= null) {
+            mfirebaseAdapter.stopListening();
         }
     }
 }

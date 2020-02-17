@@ -48,7 +48,7 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
 
-        mSavedRestaurantsButton.setOnClickListener(this);
+
 
         mSearchedEventReferenceListener = mSearchedEventReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,6 +74,7 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
 //        mEditor = mSharedPreferences.edit();
 
         mAddEvent.setOnClickListener(this);
+        mSavedRestaurantsButton.setOnClickListener(this);
 
 
 
@@ -95,10 +96,12 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
             startActivity(intent);
 
         }
+
         if (v == mSavedRestaurantsButton) {
             Intent intent = new Intent(AddEvents.this, SavedRestaurantListActivity.class);
             startActivity(intent);
         }
+
 
     }
 
