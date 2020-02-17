@@ -49,7 +49,10 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v){
         if(v == mAddEvent){
             String event = mEventText.getText().toString();
-            addToSharedPreferences(event);
+            if(!(event).equals("")) {
+                addToSharedPreferences(event);
+            }
+
             Intent intent = new Intent(AddEvents.this, EventDisplay.class );
             intent.putExtra("event",event);
             startActivity(intent);
