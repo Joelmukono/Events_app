@@ -38,6 +38,7 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
     public static final String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.addEventButton) Button mAddEvent;
     @BindView(R.id.eventEditText) EditText mEventText;
+    @BindView(R.id.savedRestaurantsButton) Button mSavedRestaurantsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
+
+        mSavedRestaurantsButton.setOnClickListener(this);
 
         mSearchedEventReferenceListener = mSearchedEventReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -91,6 +94,10 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
             intent.putExtra("event",event);
             startActivity(intent);
 
+        }
+        if (v == mSavedRestaurantsButton) {
+            Intent intent = new Intent(AddEvents.this, SavedRestaurantListActivity.class);
+            startActivity(intent);
         }
 
     }
