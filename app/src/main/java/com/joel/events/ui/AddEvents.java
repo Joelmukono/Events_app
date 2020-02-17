@@ -3,7 +3,9 @@ package com.joel.events.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,8 @@ import butterknife.ButterKnife;
 
 public class AddEvents extends AppCompatActivity implements View.OnClickListener {
 
-
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     public static final String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.addEventButton) Button mAddEvent;
@@ -31,6 +34,9 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
 
         ButterKnife.bind(this);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
         mAddEvent.setOnClickListener(this);
 
 
@@ -42,6 +48,7 @@ public class AddEvents extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v){
         if(v == mAddEvent){
             String event = mEventText.getText().toString();
+            addToSharedPreferences(location);
             Intent intent = new Intent(AddEvents.this, EventDisplay.class );
             intent.putExtra("event",event);
             startActivity(intent);
