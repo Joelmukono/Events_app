@@ -1,17 +1,23 @@
 # Events App
-Event app is an android application that allows users to Search an view categories of Events.
+Event app is an android application that allows users to Search save, retrive and view categories of Events.
 ## Author: Joel Mukono
 
 ## Technologies Used
 - XML
 - Java
+- retrofit
+- picasso
+- Firebase authentication
+- Firebase Database
 
 
 ## BDD.
-- Create launch activity
-- Create button to lead to add event activity
-- Add button and EditText to add event in display activity
-- Display event from add event activity
+- Add search for event categories
+- save event categories
+- retrive saved event categories
+- login user
+- logout user
+- Create user account
 
 ## Set-up instructions
 - Go to https://github.com/Joelmukono/Events_app
