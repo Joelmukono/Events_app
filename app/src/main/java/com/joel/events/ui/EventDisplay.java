@@ -36,6 +36,10 @@ import java.util.List;
 
 public class EventDisplay extends AppCompatActivity {
 
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentCategory;
+
 //    private SharedPreferences mSharedPreferences;
 //    private String mRecentAddress;
 
@@ -56,6 +60,7 @@ public class EventDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_event_display);
 
         ButterKnife.bind(this);
@@ -107,6 +112,8 @@ public class EventDisplay extends AppCompatActivity {
 
     }
 
+
+
     private  void getEvent(String location){
         final EventsClient yelpBusinessesSearchResponse = new EventsClient();
 
@@ -129,6 +136,9 @@ public class EventDisplay extends AppCompatActivity {
 
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+    }
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_EVENT_KEY, location).apply();
     }
 
 
