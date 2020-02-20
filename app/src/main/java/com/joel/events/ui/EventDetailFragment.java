@@ -6,7 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -37,6 +41,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.saveCategoryButton) TextView mSaveRestaurantButton;
 
     private Category mCategory;
+    private String mSource;
+    private static final int REQUEST_IMAGE_CAPTURE = 111;
 
 
     public EventDetailFragment() {
@@ -55,6 +61,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCategory = Parcels.unwrap(getArguments().getParcelable("category"));
+        setHasOptionsMenu(true);
+
     }
 
 
@@ -93,6 +101,34 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (mSource.equals(Constants.SOURCE_SAVED)) {
+            inflater.inflate(R.menu.menu_photo, menu);
+        } else {
+            inflater.inflate(R.menu.main_menu, menu);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_photo:
+                onLaunchCamera();
+            default:
+                break;
+        }
+        return false;
+    }
+
+    public void onLaunchCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
 
