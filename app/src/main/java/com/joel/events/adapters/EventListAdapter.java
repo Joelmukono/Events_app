@@ -54,12 +54,16 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         @BindView(R.id.categoryShortTextView) TextView mCategoryTextView;
         @BindView(R.id.resourceTextView) TextView mResourceTextView;
         private Context mContext;
+        private int mOrientation;
 
         public EventViewHolder(View itemView) {
+
+
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
+
         }
 
         @Override
