@@ -62,7 +62,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
 
-            mOrientation = itemView.getResources().getConfiguration().orientation;
+
 
         }
 

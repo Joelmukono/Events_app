@@ -38,15 +38,23 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventDetailFragment extends Fragment implements View.OnClickListener{
-    @BindView(R.id.restaurantImageView) ImageView mImageLabel;
-    @BindView(R.id.categoryNameTextView) TextView mNameLabel;
-    @BindView(R.id.websiteLink) TextView mWebsiteLabel;
-    @BindView(R.id.saveCategoryButton) TextView mSaveRestaurantButton;
+public class EventDetailFragment extends Fragment implements View.OnClickListener {
+    @BindView(R.id.restaurantImageView)
+    ImageView mImageLabel;
+    @BindView(R.id.categoryNameTextView)
+    TextView mNameLabel;
+    @BindView(R.id.websiteLink)
+    TextView mWebsiteLabel;
+    @BindView(R.id.saveCategoryButton)
+    TextView mSaveRestaurantButton;
 
     private Category mCategory;
     private String mSource;
     private static final int REQUEST_IMAGE_CAPTURE = 111;
+
+
+    private ArrayList<Category> mCategories;
+    private int mPosition;
 
 
     public EventDetailFragment() {
@@ -73,12 +81,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_event_detail,container,false);
-        ButterKnife.bind(this,view);
+        View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
+        ButterKnife.bind(this, view);
 
 
         List<String> categories = new ArrayList<>();
-
 
 
         mNameLabel.setText(mCategory.getName());
@@ -95,7 +102,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         return view;
     }
 
-    public void onClick(View v){
+    public void onClick(View v) {
 
         if (v == mSaveRestaurantButton) {
             DatabaseReference restaurantRef = FirebaseDatabase
@@ -153,7 +160,6 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-
 
 
 }
