@@ -2,11 +2,13 @@ package com.joel.events.ui;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.joel.events.Constants;
@@ -25,6 +28,7 @@ import com.joel.events.models.Category;
 
 import org.parceler.Parcels;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,11 +110,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        if (mSource.equals(Constants.SOURCE_SAVED)) {
-            inflater.inflate(R.menu.menu_photo, menu);
-        } else {
-            inflater.inflate(R.menu.main_menu, menu);
-        }
+
+        inflater.inflate(R.menu.menu_photo, menu);
     }
 
     @Override
@@ -122,6 +123,28 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == getActivity().RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageLabel.setImageBitmap(imageBitmap);
+            encodeBitmapAndSaveToFirebase(imageBitmap);
+        }
+    }
+
+    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CATEGORIES)
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child(mCategory.getId())
+                .child("imageUrl");
+        ref.setValue(imageEncoded);
     }
 
     public void onLaunchCamera() {
