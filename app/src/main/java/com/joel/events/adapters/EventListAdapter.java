@@ -57,12 +57,12 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         private int mOrientation;
 
         public EventViewHolder(View itemView) {
-
-
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
+
+            mOrientation = itemView.getResources().getConfiguration().orientation;
 
         }
 
